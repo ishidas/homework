@@ -5,7 +5,6 @@ var relEl = document.querySelector("[name=rel]");
 var smokerEl = document.querySelector("[name=smoker]");
 var addButton = document.querySelector(".add");
 var submitButton = document.querySelector("[type=submit]");
-
 var HouseholdObj = new Household();
 var returnedNode;
 var BrandNewPerson;
@@ -158,6 +157,33 @@ function removeElement (index) {
   olEl.removeChild(liEl);
 }
 
+function submit (houseObj) {
+  var current = Date.now();
+  if(typeof(Storage) !== "undefined") {
+    localStorage.setItem(`household-${current}`, JSON.stringify(houseObj));
+    var data = localStorage.getItem(`household-${current}`);
+    formatJSON(data);
+    var preEl = document.querySelector(".debug");
+    var textNode = document.createTextNode(data);
+
+    preEl.appendChild(textNode);
+    preEl.style.display = "block";
+    alert('data stored!');
+  } else {
+    alert('There is not web storage support in your browser');
+  }
+}
+
+function formatJSON (jsonObj) {
+  var obj = JSON.parse(jsonObj);
+
+  for (var index in obj.head) {
+    obj.head[index] = 
+      // console.log(obj.head[index] + "\n");
+  }
+
+
+}
 //listeners
 addButton.addEventListener('click', function(event){
   event.preventDefault();
@@ -166,5 +192,5 @@ addButton.addEventListener('click', function(event){
 
 submitButton.addEventListener('click', function(event){
   event.preventDefault();
-  submitAndStoreData(event);
+  submit(HouseholdObj);
 });
