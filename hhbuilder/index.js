@@ -1,9 +1,4 @@
 // Your code goes here
-/******************** HOW TO RUN THE APP*******************************************/
-//Please have both html and this js file in the same directory,
-//and double click on the html file or any other way you could think of
-//to display the html file on the browser would work.
-/*********************************************************************************/
 var ageEl = document.querySelector("[name=age]");
 var relEl = document.querySelector("[name=rel]");
 var smokerEl = document.querySelector("[name=smoker]");
