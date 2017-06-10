@@ -66,19 +66,6 @@ Household.prototype.remove = function (pos) {
   }
 }
 
-Household.prototype.seachNodeAt = function (pos){
-  var currentNode = this.head, len = this._len, counter = 1;
-  if(len === 0 || pos < 1 || pos > len){
-    alert("There is no data in");
-    return;
-  }
-  while(counter < pos){
-    currentNode = currentNode.next;
-    counter++;
-  }
-  return currentNode;
-}
-
 /*** Person Constructor***/
 function Person () {
   this.itemNum = index;
@@ -124,6 +111,8 @@ Person.prototype.addItemNum = function () {
     this.parentNode.removeChild(this);
   };
 }
+
+// helpers (^_^)v
 function submit (ResultHousehold) {
   debugEl.innerHTML = JSON.stringify(ResultHousehold,undefined, 2);
   debugEl.setAttribute("style", "display: block");
